@@ -1,0 +1,9 @@
+printf "[+] Lists hosts\\n"
+ansible-playbook --list-hosts -i "$1" "$2"
+echo
+printf "[+] Lists tasks\\n"
+ansible-playbook --list-tasks -i "$1" "$2"
+echo
+echo
+printf "[+] Dry run\\n"
+ansible-playbook --check --diff -vv -i "$1" "$2"
