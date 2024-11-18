@@ -1,0 +1,11 @@
+---
+- name: Debug
+  strategy: ansible.builtin.linear
+  hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Display all variables/facts known for a host
+      ansible.builtin.debug:
+        var: hostvars[inventory_hostname]
+      tags: debug_info

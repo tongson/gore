@@ -1,0 +1,7 @@
+namespace: local
+name: debug 
+version: 0.0.1
+authors:
+- devops <devops@stake.fish>
+description: debugging collection
+readme: /dev/null
