@@ -1,4 +1,10 @@
-printf "[+] yamllint\\n"
+if [ -z "${3+set}" ]; then
+  ANSIBLE_LIMIT="all"
+else
+  ANSIBLE_LIMIT="$3"
+fi
+printf "━━━━━━━━ YAML lint ━━━━━━━━\\n"
 yamllint "$2" && printf "Ok\\n"
-printf "[+] ansible syntax-check\\n"
-ansible-playbook -i "$1" --syntax-check "$2"
+echo
+printf "━━━━━━━━ Ansible syntax-check ━━━━━━━━\\n"
+ansible-playbook --limit "$ANSIBLE_LIMIT" -i "$1" --syntax-check "$2"
