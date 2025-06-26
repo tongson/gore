@@ -1,1 +1,6 @@
-ansible-playbook -vv -i "$1" "$2"
+if [ -z "${3+set}" ]; then
+  ANSIBLE_LIMIT="all"
+else
+  ANSIBLE_LIMIT="$3"
+fi
+ansible-playbook --limit "$ANSIBLE_LIMIT" -vv -i "$1" "$2"
